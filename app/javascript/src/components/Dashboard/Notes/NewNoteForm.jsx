@@ -6,30 +6,29 @@ import { Button, Pane } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 import * as yup from "yup";
 
-import notesApi from "apis/notes";
-
 import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "./constants";
 
-export default function NewNoteForm({ onClose }) {
-  const handleSubmit = async values => {
-    try {
-      await notesApi.create(values);
-      // refetch();
-      onClose();
-    } catch (err) {
-      logger.error(err);
-    }
+const NewNoteForm = ({ onClose, addNote }) => {
+  const handleSubmit = values => {
+    addNote(values);
   };
   return (
     <Formik
       initialValues={{
         title: "",
-        description: ""
+        description: "",
+        contact: "",
+        tags: []
       }}
       onSubmit={handleSubmit}
       validationSchema={yup.object({
         title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
+        description: yup.string().required("Description is required"),
+        contact: yup.object().required("Assigned contact is required"),
+        tags: yup
+          .array()
+          .min(1, "Tags must have atleast 1 entry")
+          .required("Tags is required")
       })}
     >
       {({ isSubmitting }) => (
@@ -53,7 +52,7 @@ export default function NewNoteForm({ onClose }) {
                 isClearable
                 isSearchable
                 label="Assigned Contact*"
-                name="assigned-contacts"
+                name="contact"
                 className="mb-6"
                 options={ASSIGNED_CONTACT_OPTIONS}
                 placeholder="Select Role"
@@ -96,4 +95,6 @@ export default function NewNoteForm({ onClose }) {
       )}
     </Formik>
   );
-}
+};
+
+export default NewNoteForm;

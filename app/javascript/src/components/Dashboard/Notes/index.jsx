@@ -23,7 +23,17 @@ const Notes = () => {
     setLoading(true);
     let updatedNotes = notes.filter(note => note.id != id);
     setNotes(updatedNotes);
-    Toastr.success("Note was deleted successfully");
+    Toastr.success("Note has been deleted successfully");
+    setLoading(false);
+  };
+
+  const addNote = note => {
+    setLoading(true);
+    note.tags = note.tags.map(item => item.label);
+    note.id = notes.at(-1).id + 1;
+    setNotes([...notes, note]);
+    setShowPane(false);
+    Toastr.success("Note has been added successfully");
     setLoading(false);
   };
 
@@ -74,6 +84,7 @@ const Notes = () => {
         showPane={showPane}
         setShowPane={setShowPane}
         title="Add New Note"
+        addNote={addNote}
       />
     </>
   );

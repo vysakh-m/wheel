@@ -5,7 +5,7 @@ import { Pane, Typography } from "neetoui/v2";
 
 import NewNoteForm from "./NewNoteForm";
 
-export default function NewNotePane({ showPane, setShowPane, title }) {
+export default function NewNotePane({ showPane, setShowPane, title, addNote }) {
   const onClose = () => setShowPane(false);
   return (
     <Pane title="Create a New Note" isOpen={showPane} onClose={onClose}>
@@ -15,7 +15,7 @@ export default function NewNotePane({ showPane, setShowPane, title }) {
         </Typography>
       </Pane.Header>
       <div>
-        <NewNoteForm onClose={onClose} />
+        <NewNoteForm onClose={onClose} addNote={addNote} />
       </div>
     </Pane>
   );

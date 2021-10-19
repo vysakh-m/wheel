@@ -8,7 +8,7 @@ import DeleteAlert from "../DeleteAlert";
 
 const NotesCard = ({ note, deleteNote }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const { title, description, action, tag, time, img, id } = note;
+  const { title, description, action, tags, time, img, id } = note;
   return (
     <>
       <NotesContainer>
@@ -18,7 +18,7 @@ const NotesCard = ({ note, deleteNote }) => {
           showAlert={setIsDeleteOpen}
         />
         <hr />
-        <NotesFooter action={action} tag={tag} time={time} img={img} />
+        <NotesFooter action={action} tags={tags} time={time} img={img} />
       </NotesContainer>
       <DeleteAlert
         isDeleteOpen={isDeleteOpen}
