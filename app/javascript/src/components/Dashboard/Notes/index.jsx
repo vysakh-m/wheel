@@ -9,14 +9,15 @@ import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
 import { NOTES_DATA } from "./constants";
+import NewNotePane from "./NewNotePane";
 import NotesCard from "./NotesCard";
 
 const Notes = () => {
   const [loading, setLoading] = useState(false);
   const [searchContent, setSearchContent] = useState("");
-
   const [showMenu, setShowMenu] = useState(true);
   const [notes, setNotes] = useState(NOTES_DATA);
+  const [showPane, setShowPane] = useState(false);
 
   const deleteNote = id => {
     setLoading(true);
@@ -44,7 +45,11 @@ const Notes = () => {
                 value={searchContent}
                 onChange={e => setSearchContent(e.target.value)}
               />
-              <Button label="Add Note +" size="large" />
+              <Button
+                label="Add Note +"
+                size="large"
+                onClick={() => setShowPane(true)}
+              />
             </div>
           }
           size="large"
@@ -65,6 +70,11 @@ const Notes = () => {
           />
         )}
       </div>
+      <NewNotePane
+        showPane={showPane}
+        setShowPane={setShowPane}
+        title="Add New Note"
+      />
     </>
   );
 };

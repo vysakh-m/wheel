@@ -30,3 +30,49 @@ export const NOTES_DATA = [
     img: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
   }
 ];
+
+export const ASSIGNED_CONTACT_OPTIONS = [
+  {
+    label: "Value One",
+    value: "value1"
+  },
+  {
+    label: "Value Two",
+    value: "value2"
+  },
+  {
+    label: "Value Three",
+    value: "value3"
+  },
+  {
+    label: "Value Four",
+    value: "value4"
+  }
+];
+
+export const TAGS_OPTIONS = [
+  {
+    label: "Getting Started",
+    value: "task1"
+  },
+  {
+    label: "Onboarding",
+    value: "task2"
+  },
+  {
+    label: "User Flow",
+    value: "task3"
+  },
+  {
+    label: "UX",
+    value: "task4"
+  },
+  {
+    label: "Bugs",
+    value: "task5"
+  },
+  {
+    label: "V2",
+    value: "task6"
+  }
+];
