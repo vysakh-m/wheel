@@ -1,96 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
+import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui";
-import { Header, SubHeader } from "neetoui/layouts";
+import { Button, Input } from "neetoui/v2";
+import { Header } from "neetoui/v2/layouts";
 
-import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
+import Menubar from "components/Common/Menubar";
 
-import DeleteAlert from "./DeleteAlert";
-import NewNotePane from "./NewNotePane";
-import NoteTable from "./NoteTable";
+import { NOTES_DATA } from "./constants";
+import NotesCard from "./NotesCard";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  const [searchContent, setSearchContent] = useState("");
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  const [showMenu, setShowMenu] = useState(true);
 
-  const fetchNotes = async () => {
-    try {
-      setLoading(true);
-      const response = await notesApi.fetch();
-      setNotes(response.data.notes);
-    } catch (error) {
-      logger.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return <PageLoader />;
-  }
+  // if (loading) {
+  //   return <PageLoader />;
+  // }
 
   return (
     <>
-      <Header
-        title="Notes"
-        actionBlock={
-          <Button
-            onClick={() => setShowNewNotePane(true)}
-            label="Add New Note"
-            icon="ri-add-line"
-          />
-        }
-      />
-      {notes.length ? (
-        <>
-          <SubHeader
-            searchProps={{
-              value: searchTerm,
-              onChange: e => setSearchTerm(e.target.value),
-              clear: () => setSearchTerm("")
-            }}
-            deleteButtonProps={{
-              onClick: () => setShowDeleteAlert(true),
-              disabled: !selectedNoteIds.length
-            }}
-          />
-          <NoteTable
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            notes={notes}
-          />
-        </>
-      ) : (
-        <EmptyState
-          image={EmptyNotesListImage}
-          title="Looks like you don't have any notes!"
-          subtitle="Add your notes to send customized emails to them."
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add New Note"
+      <Menubar showMenu={showMenu} title="Notes" />
+      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mr-7 ml-5">
+        <Header
+          actionBlock={
+            <div className="flex">
+              <Input
+                prefix={<Search size={16} />}
+                placeholder="Search Name, Email, Phone Number, Etc."
+                className="w-80 mr-2"
+                value={searchContent}
+                onChange={e => setSearchContent(e.target.value)}
+              />
+              <Button label="Add Note +" size="large" />
+            </div>
+          }
+          size="large"
+          menuBarToggle={() => setShowMenu(!showMenu)}
+          title="All Notes"
         />
-      )}
-      <NewNotePane
-        showPane={showNewNotePane}
-        setShowPane={setShowNewNotePane}
-        fetchNotes={fetchNotes}
-      />
-      {showDeleteAlert && (
-        <DeleteAlert
-          selectedNoteIds={selectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-          refetch={fetchNotes}
-        />
-      )}
+        {NOTES_DATA.length ? (
+          <>
+            {NOTES_DATA.map(note => (
+              <NotesCard key={note.id} note={note} />
+            ))}
+          </>
+        ) : (
+          <EmptyState
+            image={EmptyNotesListImage}
+            title="Looks like you don't have any notes!"
+            subtitle="Add your notes to send customized emails to them."
+          />
+        )}
+      </div>
     </>
   );
 };
