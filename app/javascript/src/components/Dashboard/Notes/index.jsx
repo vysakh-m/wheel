@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, Input } from "neetoui/v2";
+import { Button, Input, PageLoader, Toastr } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 
 import EmptyState from "components/Common/EmptyState";
@@ -12,14 +12,23 @@ import { NOTES_DATA } from "./constants";
 import NotesCard from "./NotesCard";
 
 const Notes = () => {
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [searchContent, setSearchContent] = useState("");
 
   const [showMenu, setShowMenu] = useState(true);
+  const [notes, setNotes] = useState(NOTES_DATA);
 
-  // if (loading) {
-  //   return <PageLoader />;
-  // }
+  const deleteNote = id => {
+    setLoading(true);
+    let updatedNotes = notes.filter(note => note.id != id);
+    setNotes(updatedNotes);
+    Toastr.success("Note was deleted successfully");
+    setLoading(false);
+  };
+
+  if (loading) {
+    return <PageLoader />;
+  }
 
   return (
     <>
@@ -42,10 +51,10 @@ const Notes = () => {
           menuBarToggle={() => setShowMenu(!showMenu)}
           title="All Notes"
         />
-        {NOTES_DATA.length ? (
+        {notes.length ? (
           <>
-            {NOTES_DATA.map(note => (
-              <NotesCard key={note.id} note={note} />
+            {notes.map(note => (
+              <NotesCard key={note.id} note={note} deleteNote={deleteNote} />
             ))}
           </>
         ) : (
