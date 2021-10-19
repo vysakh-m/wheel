@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, Input, PageLoader } from "neetoui/v2";
+import { Button, Input, PageLoader, Toastr } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 
 import EmptyState from "components/Common/EmptyState";
@@ -22,6 +22,7 @@ const Notes = () => {
     setLoading(true);
     let updatedNotes = notes.filter(note => note.id != id);
     setNotes(updatedNotes);
+    Toastr.success("Note was deleted successfully");
     setLoading(false);
   };
 
