@@ -1,5 +1,6 @@
 import React from "react";
 
+// @ts-ignore
 import { Pane } from "neetoui";
 
 import NewNoteForm from "./NewNoteForm";
