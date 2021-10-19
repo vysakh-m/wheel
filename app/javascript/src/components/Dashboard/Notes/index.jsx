@@ -9,20 +9,31 @@ import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
 import { NOTES_DATA } from "./constants";
+import NewNotePane from "./NewNotePane";
 import NotesCard from "./NotesCard";
 
 const Notes = () => {
   const [loading, setLoading] = useState(false);
   const [searchContent, setSearchContent] = useState("");
-
   const [showMenu, setShowMenu] = useState(true);
   const [notes, setNotes] = useState(NOTES_DATA);
+  const [showPane, setShowPane] = useState(false);
 
   const deleteNote = id => {
     setLoading(true);
     let updatedNotes = notes.filter(note => note.id != id);
     setNotes(updatedNotes);
-    Toastr.success("Note was deleted successfully");
+    Toastr.success("Note has been deleted successfully");
+    setLoading(false);
+  };
+
+  const addNote = note => {
+    setLoading(true);
+    note.tags = note.tags.map(item => item.label);
+    note.id = notes.at(-1).id + 1;
+    setNotes([...notes, note]);
+    setShowPane(false);
+    Toastr.success("Note has been added successfully");
     setLoading(false);
   };
 
@@ -44,7 +55,11 @@ const Notes = () => {
                 value={searchContent}
                 onChange={e => setSearchContent(e.target.value)}
               />
-              <Button label="Add Note +" size="large" />
+              <Button
+                label="Add Note +"
+                size="large"
+                onClick={() => setShowPane(true)}
+              />
             </div>
           }
           size="large"
@@ -65,6 +80,12 @@ const Notes = () => {
           />
         )}
       </div>
+      <NewNotePane
+        showPane={showPane}
+        setShowPane={setShowPane}
+        title="Add New Note"
+        addNote={addNote}
+      />
     </>
   );
 };

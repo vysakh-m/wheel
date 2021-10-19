@@ -4,7 +4,7 @@ export const NOTES_DATA = [
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    tag: "Getting Started",
+    tags: ["Getting Started"],
     action: "Created",
     time: "2 hours ago",
     img: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
@@ -14,7 +14,7 @@ export const NOTES_DATA = [
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    tag: "Getting Started",
+    tags: ["Getting Started"],
     action: "Drafted",
     time: "2 hours ago",
     img: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
@@ -24,9 +24,55 @@ export const NOTES_DATA = [
     title: "How to claim the warranty?",
     description:
       '"Are you getting my texts???" she texted to him. He glanced at it and chuckled under his breath. Of course he was getting them, but if he wasn\'t getting',
-    tag: "Getting Started",
+    tags: ["Getting Started"],
     action: "Drafted",
     time: "2 hours ago",
     img: "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+  }
+];
+
+export const ASSIGNED_CONTACT_OPTIONS = [
+  {
+    label: "Value One",
+    value: "value1"
+  },
+  {
+    label: "Value Two",
+    value: "value2"
+  },
+  {
+    label: "Value Three",
+    value: "value3"
+  },
+  {
+    label: "Value Four",
+    value: "value4"
+  }
+];
+
+export const TAGS_OPTIONS = [
+  {
+    label: "Getting Started",
+    value: "task1"
+  },
+  {
+    label: "Onboarding",
+    value: "task2"
+  },
+  {
+    label: "User Flow",
+    value: "task3"
+  },
+  {
+    label: "UX",
+    value: "task4"
+  },
+  {
+    label: "Bugs",
+    value: "task5"
+  },
+  {
+    label: "V2",
+    value: "task6"
   }
 ];
