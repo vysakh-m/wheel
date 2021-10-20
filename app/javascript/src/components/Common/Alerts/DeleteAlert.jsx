@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Check } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui/v2";
 
 const DeleteAlert = ({
@@ -32,6 +33,7 @@ const DeleteAlert = ({
         <Button
           label="Continue"
           size="large"
+          icon={Check}
           onClick={() => {
             deleteFunction(deleteId);
             setIsDeleteOpen(false);

@@ -14,7 +14,7 @@ function Row({ contact, deleteContact }) {
           <Checkbox name="1" />
         </td>
         <td>
-          <div className="flex">
+          <div className="flex space-x-2">
             <Avatar
               size="medium"
               user={{
@@ -22,7 +22,7 @@ function Row({ contact, deleteContact }) {
                 imageUrl: contact.img
               }}
             />
-            <div className="ml-2">
+            <div>
               <Typography style="h5">
                 {`${contact.firstName} ${contact.lastName}`}
               </Typography>
