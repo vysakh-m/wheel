@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
+import DeleteAlert from "components/Common/Alerts/DeleteAlert";
+
 import NotesBody from "./NotesBody";
 import NotesContainer from "./NotesContainer";
 import NotesFooter from "./NotesFooter";
-
-import DeleteAlert from "../DeleteAlert";
 
 const NotesCard = ({ note, deleteNote }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -24,7 +24,8 @@ const NotesCard = ({ note, deleteNote }) => {
         isDeleteOpen={isDeleteOpen}
         setIsDeleteOpen={setIsDeleteOpen}
         deleteId={id}
-        deleteNote={deleteNote}
+        deleteFunction={deleteNote}
+        type="Note"
       />
     </>
   );

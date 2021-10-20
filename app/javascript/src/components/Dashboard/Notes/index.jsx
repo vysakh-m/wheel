@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, Input, PageLoader, Toastr } from "neetoui/v2";
-import { Header } from "neetoui/v2/layouts";
+import { PageLoader, Toastr } from "neetoui/v2";
 
+import CustomHeader from "components/Common/CustomHeader";
 import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
@@ -45,25 +44,13 @@ const Notes = () => {
     <>
       <Menubar showMenu={showMenu} title="Notes" />
       <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mr-7 ml-5">
-        <Header
-          actionBlock={
-            <div className="flex">
-              <Input
-                prefix={<Search size={16} />}
-                placeholder="Search Name, Email, Phone Number, Etc."
-                className="w-80 mr-2"
-                value={searchContent}
-                onChange={e => setSearchContent(e.target.value)}
-              />
-              <Button
-                label="Add Note +"
-                size="large"
-                onClick={() => setShowPane(true)}
-              />
-            </div>
-          }
-          size="large"
-          menuBarToggle={() => setShowMenu(!showMenu)}
+        <CustomHeader
+          searchContent={searchContent}
+          setSearchContent={setSearchContent}
+          setShowPane={setShowPane}
+          setShowMenu={setShowMenu}
+          showMenu={showMenu}
+          buttonLabel="Add Note +"
           title="All Notes"
         />
         {notes.length ? (
