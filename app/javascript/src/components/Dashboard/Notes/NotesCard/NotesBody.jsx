@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MenuVertical } from "@bigbinary/neeto-icons";
+import { MenuVertical } from "neetoicons";
 import { Typography, Dropdown } from "neetoui/v2";
 
 const NotesBody = ({ title, description, showAlert }) => {

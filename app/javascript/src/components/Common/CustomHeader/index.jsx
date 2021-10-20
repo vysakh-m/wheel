@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
+import { Search } from "neetoicons";
 import { Button, Input } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
 

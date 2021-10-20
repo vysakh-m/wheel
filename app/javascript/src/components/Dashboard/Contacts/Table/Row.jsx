@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { MenuHorizontal } from "@bigbinary/neeto-icons";
+import { MenuHorizontal } from "neetoicons";
 import { Checkbox, Dropdown, Typography, Avatar } from "neetoui/v2";
 
 import DeleteAlert from "components/Common/Alerts/DeleteAlert";
