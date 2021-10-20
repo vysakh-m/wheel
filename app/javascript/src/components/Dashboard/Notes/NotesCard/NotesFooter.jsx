@@ -18,7 +18,7 @@ function NotesFooter({ action, tags, time, img }) {
       </div>
 
       <div className="flex flex-column items-center">
-        <Clock size={16} />
+        <Clock className="text-gray-500" size={16} />
         <Typography className="text-gray-500 mx-1" style="body2">
           {action ? action : "Created"} {time ? time : "2 hours ago"}
         </Typography>
