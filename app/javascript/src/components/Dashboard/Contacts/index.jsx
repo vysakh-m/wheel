@@ -3,11 +3,16 @@ import React, { useState } from "react";
 import CustomHeader from "components/Common/CustomHeader";
 import Menubar from "components/Common/Menubar";
 
+import { CONTACT_DATA } from "./constants";
+import Table from "./Table";
+
 const Contacts = () => {
+  // const [contacts, setContacts] = useState(CONTACT_DATA);
   const [showMenu, setShowMenu] = useState(true);
   const [searchContent, setSearchContent] = useState("");
   // const [showPane, setShowPane] = useState(false);
-  //Dummy Function to bypass eslint
+
+  //Dummy Functions to bypass eslint
   let setShowPane = () => {};
 
   return (
@@ -24,6 +29,7 @@ const Contacts = () => {
           buttonLabel="Add Contact +"
           title="All Contacts"
         />
+        <Table contacts={CONTACT_DATA} />
       </div>
     </>
   );
