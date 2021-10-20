@@ -6,6 +6,7 @@ import CustomHeader from "components/Common/CustomHeader";
 import Menubar from "components/Common/Menubar";
 
 import { CONTACT_DATA } from "./constants";
+import NewContactPane from "./NewContactPane";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -13,17 +14,22 @@ const Contacts = () => {
   const [contacts, setContacts] = useState(CONTACT_DATA);
   const [showMenu, setShowMenu] = useState(true);
   const [searchContent, setSearchContent] = useState("");
-  // const [showPane, setShowPane] = useState(false);
+  const [showPane, setShowPane] = useState(false);
 
   const deleteContact = id => {
     setLoading(true);
     setContacts(contacts.filter(contact => contact.id != id));
-    Toastr.success("Contact has been deleted successfully");
+    Toastr.success("Contact deleted successfully");
     setLoading(false);
   };
 
-  //Dummy Function to bypass eslint
-  let setShowPane = () => {};
+  const addContact = contact => {
+    setLoading(true);
+    contact.role = contact.role.label;
+    setContacts([...contacts, contact]);
+    setShowPane(false);
+    setLoading(false);
+  };
 
   if (loading) {
     return <PageLoader />;
@@ -45,6 +51,12 @@ const Contacts = () => {
         />
         <Table contacts={contacts} deleteContact={deleteContact} />
       </div>
+      <NewContactPane
+        showPane={showPane}
+        setShowPane={setShowPane}
+        title="Add New Contact"
+        addContact={addContact}
+      />
     </>
   );
 };
