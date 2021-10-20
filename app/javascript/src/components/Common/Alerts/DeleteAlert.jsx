@@ -6,7 +6,8 @@ const DeleteAlert = ({
   isDeleteOpen,
   setIsDeleteOpen,
   deleteId,
-  deleteNote
+  deleteFunction,
+  type
 }) => {
   return (
     <Modal
@@ -15,7 +16,7 @@ const DeleteAlert = ({
       size="md"
     >
       <Modal.Header>
-        <Typography style="h2">Delete Note</Typography>
+        <Typography style="h2">Delete {type}</Typography>
       </Modal.Header>
       <Modal.Body>
         <Typography
@@ -23,8 +24,8 @@ const DeleteAlert = ({
           lineHeight="normal"
           className="neeto-ui-text-gray-600"
         >
-          Are you sure you want to delete the note? This action cannot be
-          undone.
+          Are you sure you want to delete the {type.toLowerCase()}? This action
+          cannot be undone.
         </Typography>
       </Modal.Body>
       <Modal.Footer className="space-x-2">
@@ -32,7 +33,7 @@ const DeleteAlert = ({
           label="Continue"
           size="large"
           onClick={() => {
-            deleteNote(deleteId);
+            deleteFunction(deleteId);
             setIsDeleteOpen(false);
           }}
         />

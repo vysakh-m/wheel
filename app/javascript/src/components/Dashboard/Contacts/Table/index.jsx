@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./Header";
 import Row from "./Row";
 
-const Table = ({ contacts }) => {
+const Table = ({ contacts, deleteContact }) => {
   return (
     <div className="w-full">
       <table
@@ -13,7 +13,7 @@ const Table = ({ contacts }) => {
         <tbody>
           {contacts.map((contact, index) => (
             <React.Fragment key={index}>
-              <Row contact={contact} />
+              <Row contact={contact} deleteContact={deleteContact} />
             </React.Fragment>
           ))}
         </tbody>
