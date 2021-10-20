@@ -27,6 +27,7 @@ const Contacts = () => {
     setLoading(true);
     contact.role = contact.role.label;
     setContacts([...contacts, contact]);
+    Toastr.success("Contact added successfully");
     setShowPane(false);
     setLoading(false);
   };
@@ -39,18 +40,21 @@ const Contacts = () => {
     <>
       <Menubar showMenu={showMenu} title="Contacts" />
 
-      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mr-7 ml-5">
-        <CustomHeader
-          searchContent={searchContent}
-          setSearchContent={setSearchContent}
-          setShowPane={setShowPane}
-          setShowMenu={setShowMenu}
-          showMenu={showMenu}
-          buttonLabel="Add Contact +"
-          title="All Contacts"
-        />
-        <Table contacts={contacts} deleteContact={deleteContact} />
+      <div className="flex flex-col items-start justify-between flex-grow h-screen  mr-7 ml-5">
+        <div className="w-full">
+          <CustomHeader
+            searchContent={searchContent}
+            setSearchContent={setSearchContent}
+            setShowPane={setShowPane}
+            setShowMenu={setShowMenu}
+            showMenu={showMenu}
+            buttonLabel="Add Contact +"
+            title="All Contacts"
+          />
+          <Table contacts={contacts} deleteContact={deleteContact} />
+        </div>
       </div>
+
       <NewContactPane
         showPane={showPane}
         setShowPane={setShowPane}

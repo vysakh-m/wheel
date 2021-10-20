@@ -34,7 +34,7 @@ const NewNoteForm = ({ onClose, addNote }) => {
       {({ isSubmitting }) => (
         <Form>
           <Pane.Body>
-            <div className="px-6 w-full">
+            <div className="px-1 w-full">
               <Input
                 label="Title*"
                 name="title"

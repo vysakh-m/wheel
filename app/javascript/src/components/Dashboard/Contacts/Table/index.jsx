@@ -1,11 +1,13 @@
 import React from "react";
 
+import { Scrollable } from "@bigbinary/neetoui/v2/layouts";
+
 import Header from "./Header";
 import Row from "./Row";
 
 const Table = ({ contacts, deleteContact }) => {
   return (
-    <div className="w-full">
+    <Scrollable className="w-full h-full">
       <table
         className={`neeto-ui-table neeto-ui-table--checkbox neeto-ui-table--actions`}
       >
@@ -18,7 +20,7 @@ const Table = ({ contacts, deleteContact }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </Scrollable>
   );
 };
 

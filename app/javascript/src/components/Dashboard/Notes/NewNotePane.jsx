@@ -10,7 +10,7 @@ export default function NewNotePane({ showPane, setShowPane, title, addNote }) {
   return (
     <Pane title="Create a New Note" isOpen={showPane} onClose={onClose}>
       <Pane.Header>
-        <Typography style="h2" weight="semibold">
+        <Typography className="px-1" style="h2" weight="semibold">
           {title}
         </Typography>
       </Pane.Header>

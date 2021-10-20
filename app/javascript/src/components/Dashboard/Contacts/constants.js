@@ -30,38 +30,6 @@ export const CONTACT_DATA = [
     role: "Owner",
     email: "albert@borer.com",
     img: "https://randomuser.me/api/portraits/women/63.jpg"
-  },
-  {
-    id: 5,
-    firstName: "Ronald",
-    lastName: "Richards",
-    role: "Owner",
-    email: "albert@borer.com",
-    img: ""
-  },
-  {
-    id: 6,
-    firstName: "Jacob",
-    lastName: "Jones",
-    role: "Owner",
-    email: "albert@borer.com",
-    img: "https://randomuser.me/api/portraits/women/63.jpg"
-  },
-  {
-    id: 7,
-    firstName: "Ronald",
-    lastName: "Richards",
-    role: "Owner",
-    email: "albert@borer.com",
-    img: ""
-  },
-  {
-    id: 8,
-    firstName: "Jacob",
-    lastName: "Jones",
-    role: "Owner",
-    email: "albert@borer.com",
-    img: "https://randomuser.me/api/portraits/women/63.jpg"
   }
 ];
 
