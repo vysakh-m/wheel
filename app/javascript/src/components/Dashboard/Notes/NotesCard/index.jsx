@@ -17,7 +17,9 @@ const NotesCard = ({ note, deleteNote }) => {
           description={description}
           showAlert={setIsDeleteOpen}
         />
-        <hr />
+        <div className="w-full">
+          <div className="w-full border-b neeto-ui-gray-200"></div>
+        </div>
         <NotesFooter action={action} tags={tags} time={time} img={img} />
       </NotesContainer>
       <DeleteAlert

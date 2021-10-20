@@ -7,7 +7,7 @@ const NotesBody = ({ title, description, showAlert }) => {
   return (
     <>
       <div className="flex flex-column justify-between">
-        <Typography className="mt-2 " style="h4">
+        <Typography className="mb-0.5" style="h4">
           {title}
         </Typography>
 
@@ -17,7 +17,7 @@ const NotesBody = ({ title, description, showAlert }) => {
         </Dropdown>
       </div>
 
-      <Typography className="my-2" style="body2">
+      <Typography className="mb-3" style="body2">
         {description}
       </Typography>
     </>

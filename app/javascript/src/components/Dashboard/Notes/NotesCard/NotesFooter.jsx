@@ -5,7 +5,7 @@ import { Typography, Avatar, Tag } from "neetoui/v2";
 
 function NotesFooter({ action, tags, time, img }) {
   return (
-    <div className="mt-3 flex justify-between">
+    <div className="mt-3.5 flex justify-between">
       <div className="flex ">
         {tags.map((item, index) => (
           <Tag

@@ -43,7 +43,7 @@ const Notes = () => {
   return (
     <>
       <Menubar showMenu={showMenu} title="Notes" />
-      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mr-6 ml-6">
+      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mx-6">
         <CustomHeader
           searchContent={searchContent}
           setSearchContent={setSearchContent}
