@@ -12,44 +12,43 @@ import NewNotePane from "./NewNotePane";
 import NotesCard from "./NotesCard";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchContent, setSearchContent] = useState("");
   const [showMenu, setShowMenu] = useState(true);
   const [notes, setNotes] = useState(NOTES_DATA);
   const [showPane, setShowPane] = useState(false);
 
   const deleteNote = id => {
-    setLoading(true);
+    setIsLoading(true);
     let updatedNotes = notes.filter(note => note.id != id);
     setNotes(updatedNotes);
     Toastr.success("Note has been deleted successfully");
-    setLoading(false);
+    setIsLoading(false);
   };
 
   const addNote = note => {
-    setLoading(true);
+    setIsLoading(true);
     note.tags = note.tags.map(item => item.label);
     note.id = notes.at(-1).id + 1;
     setNotes([...notes, note]);
     setShowPane(false);
     Toastr.success("Note has been added successfully");
-    setLoading(false);
+    setIsLoading(false);
   };
 
-  if (loading) {
+  if (isLoading) {
     return <PageLoader />;
   }
 
   return (
     <>
       <Menubar showMenu={showMenu} title="Notes" />
-      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mr-7 ml-5">
+      <div className="flex flex-col items-start justify-start flex-grow h-screen overflow-y-auto mx-6">
         <CustomHeader
           searchContent={searchContent}
           setSearchContent={setSearchContent}
           setShowPane={setShowPane}
           setShowMenu={setShowMenu}
-          showMenu={showMenu}
           buttonLabel="Add Note +"
           title="All Notes"
         />

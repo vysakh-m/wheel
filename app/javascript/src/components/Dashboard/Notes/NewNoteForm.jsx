@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
 import { Formik, Form } from "formik";
+import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
-import * as yup from "yup";
 
 import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "./constants";
+import { NOTE_INITIAL_VALUES, NOTE_VALIDATION_SCHEMA } from "./constants";
 
 const NewNoteForm = ({ onClose, addNote }) => {
   const handleSubmit = values => {
@@ -14,37 +14,18 @@ const NewNoteForm = ({ onClose, addNote }) => {
   };
   return (
     <Formik
-      initialValues={{
-        title: "",
-        description: "",
-        contact: "",
-        tags: []
-      }}
+      initialValues={NOTE_INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required"),
-        contact: yup.object().required("Assigned contact is required"),
-        tags: yup
-          .array()
-          .min(1, "Tags must have atleast 1 entry")
-          .required("Tags is required")
-      })}
+      validationSchema={NOTE_VALIDATION_SCHEMA}
     >
       {({ isSubmitting }) => (
         <Form>
           <Pane.Body>
-            <div className="px-1 w-full">
-              <Input
-                label="Title*"
-                name="title"
-                className="mb-6"
-                placeholder="Enter Title"
-              />
+            <div className="px-1 w-full space-y-6">
+              <Input label="Title*" name="title" placeholder="Enter Title" />
               <Input
                 label="Description*"
                 name="description"
-                className="mb-6"
                 size="large"
                 placeholder="Enter Description"
               />
@@ -53,7 +34,6 @@ const NewNoteForm = ({ onClose, addNote }) => {
                 isSearchable
                 label="Assigned Contact*"
                 name="contact"
-                className="mb-6"
                 options={ASSIGNED_CONTACT_OPTIONS}
                 placeholder="Select Role"
               />
@@ -63,7 +43,6 @@ const NewNoteForm = ({ onClose, addNote }) => {
                 isSearchable
                 label="Tags*"
                 name="tags"
-                className="mb-6"
                 options={TAGS_OPTIONS}
                 placeholder="Select Tags"
               />

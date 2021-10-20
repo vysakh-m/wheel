@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 export const NOTES_DATA = [
   {
     id: 1,
@@ -76,3 +78,20 @@ export const TAGS_OPTIONS = [
     value: "task6"
   }
 ];
+
+export const NOTE_INITIAL_VALUES = {
+  title: "",
+  description: "",
+  contact: "",
+  tags: []
+};
+
+export const NOTE_VALIDATION_SCHEMA = yup.object({
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required"),
+  contact: yup.object().required("Assigned contact is required"),
+  tags: yup
+    .array()
+    .min(1, "Tags must have atleast 1 entry")
+    .required("Tags is required")
+});

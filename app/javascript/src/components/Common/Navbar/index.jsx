@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Home, Settings, UserCircle } from "@bigbinary/neeto-icons";
 import { Toastr } from "neetoui";
 import { Sidebar } from "neetoui/v2/layouts";
 import { withRouter } from "react-router-dom";
@@ -8,6 +7,8 @@ import { withRouter } from "react-router-dom";
 import authenticationApi from "apis/authentication";
 import { resetAuthTokens } from "apis/axios";
 import { useAuthDispatch } from "contexts/auth";
+
+import { NAV_LINKS } from "./constants";
 
 const NavBar = () => {
   const authDispatch = useAuthDispatch();
@@ -26,29 +27,7 @@ const NavBar = () => {
     <div className="flex flex-row items-start justify-start">
       <Sidebar
         isCollapsed
-        navLinks={[
-          {
-            icon: function noRefCheck() {
-              return <Home />;
-            },
-            label: "Notes",
-            to: "/notes"
-          },
-          {
-            icon: function noRefCheck() {
-              return <UserCircle />;
-            },
-            label: "Contacts",
-            to: "/contacts"
-          },
-          {
-            icon: function noRefCheck() {
-              return <Settings />;
-            },
-            label: "Settings",
-            to: "/settings"
-          }
-        ]}
+        navLinks={NAV_LINKS}
         profileInfo={{
           dropdownProps: [
             {
