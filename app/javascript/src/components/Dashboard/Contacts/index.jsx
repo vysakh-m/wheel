@@ -10,29 +10,29 @@ import NewContactPane from "./NewContactPane";
 import Table from "./Table";
 
 const Contacts = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [contacts, setContacts] = useState(CONTACT_DATA);
   const [showMenu, setShowMenu] = useState(true);
   const [searchContent, setSearchContent] = useState("");
   const [showPane, setShowPane] = useState(false);
 
   const deleteContact = id => {
-    setLoading(true);
+    setIsLoading(true);
     setContacts(contacts.filter(contact => contact.id != id));
     Toastr.success("Contact deleted successfully");
-    setLoading(false);
+    setIsLoading(false);
   };
 
   const addContact = contact => {
-    setLoading(true);
+    setIsLoading(true);
     contact.role = contact.role.label;
     setContacts([...contacts, contact]);
     Toastr.success("Contact added successfully");
     setShowPane(false);
-    setLoading(false);
+    setIsLoading(false);
   };
 
-  if (loading) {
+  if (isLoading) {
     return <PageLoader />;
   }
 
