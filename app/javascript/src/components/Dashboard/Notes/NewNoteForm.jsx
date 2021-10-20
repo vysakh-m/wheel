@@ -4,9 +4,9 @@ import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
-import * as yup from "yup";
 
 import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "./constants";
+import { NOTE_INITIAL_VALUES, NOTE_VALIDATION_SCHEMA } from "./constants";
 
 const NewNoteForm = ({ onClose, addNote }) => {
   const handleSubmit = values => {
@@ -14,22 +14,9 @@ const NewNoteForm = ({ onClose, addNote }) => {
   };
   return (
     <Formik
-      initialValues={{
-        title: "",
-        description: "",
-        contact: "",
-        tags: []
-      }}
+      initialValues={NOTE_INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required"),
-        contact: yup.object().required("Assigned contact is required"),
-        tags: yup
-          .array()
-          .min(1, "Tags must have atleast 1 entry")
-          .required("Tags is required")
-      })}
+      validationSchema={NOTE_VALIDATION_SCHEMA}
     >
       {({ isSubmitting }) => (
         <Form>

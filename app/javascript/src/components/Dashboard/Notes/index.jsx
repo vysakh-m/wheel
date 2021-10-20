@@ -49,7 +49,6 @@ const Notes = () => {
           setSearchContent={setSearchContent}
           setShowPane={setShowPane}
           setShowMenu={setShowMenu}
-          showMenu={showMenu}
           buttonLabel="Add Note +"
           title="All Notes"
         />

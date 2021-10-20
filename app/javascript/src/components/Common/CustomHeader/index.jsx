@@ -9,7 +9,6 @@ const CustomHeader = ({
   setSearchContent,
   setShowPane,
   setShowMenu,
-  showMenu,
   buttonLabel,
   title
 }) => {
@@ -33,7 +32,7 @@ const CustomHeader = ({
           </div>
         }
         size="large"
-        menuBarToggle={() => setShowMenu(!showMenu)}
+        menuBarToggle={() => setShowMenu(showMenu => !showMenu)}
         title={title}
       />
     </>

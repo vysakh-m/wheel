@@ -47,7 +47,6 @@ const Contacts = () => {
             setSearchContent={setSearchContent}
             setShowPane={setShowPane}
             setShowMenu={setShowMenu}
-            showMenu={showMenu}
             buttonLabel="Add Contact +"
             title="All Contacts"
           />
