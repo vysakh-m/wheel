@@ -17,11 +17,11 @@ const CustomHeader = ({
     <>
       <Header
         actionBlock={
-          <div className="flex">
+          <div className="flex space-x-3">
             <Input
               prefix={<Search size={16} />}
               placeholder="Search Name, Email, Phone Number, Etc."
-              className="w-80 mr-2"
+              className="w-80"
               value={searchContent}
               onChange={e => setSearchContent(e.target.value)}
             />
