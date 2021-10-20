@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { PageLoader, Toastr } from "neetoui/v2";
+import { PageLoader, Toastr, Pagination } from "neetoui/v2";
 
 import CustomHeader from "components/Common/CustomHeader";
 import Menubar from "components/Common/Menubar";
@@ -52,6 +52,14 @@ const Contacts = () => {
             title="All Contacts"
           />
           <Table contacts={contacts} deleteContact={deleteContact} />
+        </div>
+        <div className="flex flex-row items-center justify-end w-full h-full mt-6 mb-8 ">
+          <Pagination
+            count={300}
+            pageNo={1}
+            pageSize={25}
+            navigate={() => {}}
+          />
         </div>
       </div>
 
