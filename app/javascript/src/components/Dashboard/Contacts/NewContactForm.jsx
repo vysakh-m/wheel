@@ -6,66 +6,68 @@ import { Button, Pane } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 import * as yup from "yup";
 
-import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "./constants";
+import { ROLE_OPTIONS } from "./constants";
 
-const NewNoteForm = ({ onClose, addNote }) => {
+const NewContactForm = ({ onClose, addContact }) => {
   const handleSubmit = values => {
-    addNote(values);
+    addContact(values);
   };
   return (
     <Formik
       initialValues={{
-        title: "",
-        description: "",
-        contact: "",
-        tags: []
+        firstName: "",
+        lastName: "",
+        email: "",
+        role: ""
       }}
       onSubmit={handleSubmit}
       validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required"),
-        contact: yup.object().required("Assigned contact is required"),
-        tags: yup
-          .array()
-          .min(1, "Tags must have atleast 1 entry")
-          .required("Tags is required")
+        firstName: yup.string().required("First Name is required"),
+        lastName: yup.string().required("Last Name is required"),
+        email: yup
+          .string()
+          .email("Invalid Email")
+          .required("Email Address is required"),
+        role: yup.object().required("Role is required")
       })}
     >
       {({ isSubmitting }) => (
         <Form>
           <Pane.Body>
             <div className="px-1 w-full">
+              <div className="flex ">
+                <Input
+                  label="First Name*"
+                  name="firstName"
+                  className="mb-6"
+                  size="large"
+                  placeholder="Enter First Name"
+                />
+                <Input
+                  label="Last Name*"
+                  name="lastName"
+                  className="mb-6 ml-4"
+                  size="large"
+                  placeholder="Enter Last Name"
+                />
+              </div>
+
               <Input
-                label="Title*"
-                name="title"
-                className="mb-6"
-                placeholder="Enter Title"
-              />
-              <Input
-                label="Description*"
-                name="description"
+                label="Email Address*"
+                name="email"
                 className="mb-6"
                 size="large"
-                placeholder="Enter Description"
+                placeholder="Enter your email address"
               />
+
               <Select
                 isClearable
                 isSearchable
-                label="Assigned Contact*"
-                name="contact"
+                label="Role*"
+                name="role"
                 className="mb-6"
-                options={ASSIGNED_CONTACT_OPTIONS}
+                options={ROLE_OPTIONS}
                 placeholder="Select Role"
-              />
-              <Select
-                isMulti
-                isClearable
-                isSearchable
-                label="Tags*"
-                name="tags"
-                className="mb-6"
-                options={TAGS_OPTIONS}
-                placeholder="Select Tags"
               />
             </div>
           </Pane.Body>
@@ -97,4 +99,4 @@ const NewNoteForm = ({ onClose, addNote }) => {
   );
 };
 
-export default NewNoteForm;
+export default NewContactForm;

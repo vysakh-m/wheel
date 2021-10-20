@@ -18,13 +18,13 @@ function Row({ contact, deleteContact }) {
             <Avatar
               size="medium"
               user={{
-                name: `${contact.first_name} ${contact.last_name}`,
+                name: `${contact.firstName} ${contact.lastName}`,
                 imageUrl: contact.img
               }}
             />
             <div className="ml-2">
               <Typography style="h5">
-                {`${contact.first_name} ${contact.last_name}`}
+                {`${contact.firstName} ${contact.lastName}`}
               </Typography>
               <Typography style="body3">{contact.role}</Typography>
             </div>
