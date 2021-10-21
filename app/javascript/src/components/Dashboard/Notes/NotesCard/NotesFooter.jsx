@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Clock } from "neetoicons";
-import { Typography, Avatar, Tag } from "neetoui";
+import { Typography, Avatar, Tag, Tooltip } from "neetoui";
 
 function NotesFooter({ action, tags, time, img }) {
   return (
@@ -18,10 +18,14 @@ function NotesFooter({ action, tags, time, img }) {
       </div>
 
       <div className="flex flex-column items-center">
-        <Clock className="text-gray-500" size={16} />
-        <Typography className="text-gray-500 mx-1" style="body2">
-          {action ? action : "Created"} {time ? time : "2 hours ago"}
-        </Typography>
+        <Clock className="text-gray-500 " size={16} />
+        <Tooltip content="Wednesday, 10:30AM" placement="bottom-start">
+          <div>
+            <Typography className="text-gray-500 mx-1" style="body2">
+              {action ? action : "Created"} {time ? time : "2 hours ago"}
+            </Typography>
+          </div>
+        </Tooltip>
         <Avatar
           size="small"
           user={{
