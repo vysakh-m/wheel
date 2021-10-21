@@ -24,19 +24,18 @@ const NewContactForm = ({ onClose, addContact }) => {
       {({ isSubmitting }) => (
         <Form>
           <Pane.Body>
-            <div className="px-1 w-full">
+            <div className="px-1 w-full space-y-6">
               <div className="flex ">
                 <Input
                   label="First Name*"
                   name="firstName"
-                  className="mb-6"
                   size="large"
                   placeholder="Enter First Name"
                 />
                 <Input
                   label="Last Name*"
                   name="lastName"
-                  className="mb-6 ml-4"
+                  className="ml-4"
                   size="large"
                   placeholder="Enter Last Name"
                 />
@@ -45,7 +44,6 @@ const NewContactForm = ({ onClose, addContact }) => {
               <Input
                 label="Email Address*"
                 name="email"
-                className="mb-6"
                 size="large"
                 placeholder="Enter your email address"
               />
@@ -55,7 +53,6 @@ const NewContactForm = ({ onClose, addContact }) => {
                 isSearchable
                 label="Role*"
                 name="role"
-                className="mb-6"
                 options={ROLE_OPTIONS}
                 placeholder="Select Role"
               />
