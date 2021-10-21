@@ -9,11 +9,11 @@ import Create from "./Create";
 
 import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "../constants";
 
-const CreateNote = ({ showPane, setShowPane, title, addNote }) => {
-  const onClose = () => setShowPane(false);
+const CreateNote = ({ isNotePaneOpen, setIsNotePaneOpen, title, addNote }) => {
+  const onClose = () => setIsNotePaneOpen(false);
 
   return (
-    <Pane title="Create a New Note" isOpen={showPane} onClose={onClose}>
+    <Pane title="Create a New Note" isOpen={isNotePaneOpen} onClose={onClose}>
       <Pane.Header>
         <Typography className="px-1" style="h2" weight="semibold">
           {title}

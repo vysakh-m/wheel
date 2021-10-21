@@ -14,7 +14,7 @@ const Contacts = () => {
   const [contacts, setContacts] = useState(CONTACT_DATA);
   const [showMenu, setShowMenu] = useState(true);
   const [searchContent, setSearchContent] = useState("");
-  const [showPane, setShowPane] = useState(false);
+  const [isContactPaneOpen, setIsContactPaneOpen] = useState(false);
 
   const deleteContact = id => {
     setIsLoading(true);
@@ -28,7 +28,7 @@ const Contacts = () => {
     contact.role = contact.role.label;
     setContacts([...contacts, contact]);
     Toastr.success("Contact added successfully");
-    setShowPane(false);
+    setIsContactPaneOpen(false);
     setIsLoading(false);
   };
 
@@ -45,7 +45,7 @@ const Contacts = () => {
           <CustomHeader
             searchContent={searchContent}
             setSearchContent={setSearchContent}
-            setShowPane={setShowPane}
+            setShowPane={setIsContactPaneOpen}
             setShowMenu={setShowMenu}
             buttonLabel="Add Contact +"
             title="All Contacts"
@@ -63,8 +63,8 @@ const Contacts = () => {
       </div>
 
       <NewContactPane
-        showPane={showPane}
-        setShowPane={setShowPane}
+        isContactPaneOpen={isContactPaneOpen}
+        setIsContactPaneOpen={setIsContactPaneOpen}
         title="Add New Contact"
         addContact={addContact}
       />

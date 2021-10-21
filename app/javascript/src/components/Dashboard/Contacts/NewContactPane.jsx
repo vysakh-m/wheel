@@ -4,10 +4,15 @@ import { Pane, Typography } from "neetoui";
 
 import NewContactForm from "./NewContactForm";
 
-const NewContactPane = ({ showPane, setShowPane, title, addContact }) => {
-  const onClose = () => setShowPane(false);
+const NewContactPane = ({
+  isContactPaneOpen,
+  setIsContactPaneOpen,
+  title,
+  addContact
+}) => {
+  const onClose = () => setIsContactPaneOpen(false);
   return (
-    <Pane title={title} isOpen={showPane} onClose={onClose}>
+    <Pane title={title} isOpen={isContactPaneOpen} onClose={onClose}>
       <Pane.Header>
         <Typography className="px-1" style="h2" weight="semibold">
           {title}

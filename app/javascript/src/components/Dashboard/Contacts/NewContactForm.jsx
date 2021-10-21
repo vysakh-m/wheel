@@ -4,9 +4,12 @@ import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
 import { Button, Pane } from "neetoui";
 import { Input, Select } from "neetoui/formik";
-import * as yup from "yup";
 
 import { ROLE_OPTIONS } from "./constants";
+import {
+  CONTACTS_INITIAL_VALUE,
+  CONTACTS_VALIDATION_SCHEMA
+} from "./constants";
 
 const NewContactForm = ({ onClose, addContact }) => {
   const handleSubmit = values => {
@@ -14,22 +17,9 @@ const NewContactForm = ({ onClose, addContact }) => {
   };
   return (
     <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        role: ""
-      }}
+      initialValues={CONTACTS_INITIAL_VALUE}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        firstName: yup.string().required("First Name is required"),
-        lastName: yup.string().required("Last Name is required"),
-        email: yup
-          .string()
-          .email("Invalid Email")
-          .required("Email Address is required"),
-        role: yup.object().required("Role is required")
-      })}
+      validationSchema={CONTACTS_VALIDATION_SCHEMA}
     >
       {({ isSubmitting }) => (
         <Form>

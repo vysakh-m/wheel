@@ -16,7 +16,7 @@ const Notes = () => {
   const [searchContent, setSearchContent] = useState("");
   const [showMenu, setShowMenu] = useState(true);
   const [notes, setNotes] = useState(NOTES_DATA);
-  const [showPane, setShowPane] = useState(false);
+  const [isNotePaneOpen, setIsNotePaneOpen] = useState(false);
 
   const deleteNote = id => {
     setIsLoading(true);
@@ -31,7 +31,7 @@ const Notes = () => {
     note.tags = note.tags.map(item => item.label);
     note.id = notes.at(-1).id + 1;
     setNotes([...notes, note]);
-    setShowPane(false);
+    setIsNotePaneOpen(false);
     Toastr.success("Note has been added successfully");
     setIsLoading(false);
   };
@@ -47,7 +47,7 @@ const Notes = () => {
         <CustomHeader
           searchContent={searchContent}
           setSearchContent={setSearchContent}
-          setShowPane={setShowPane}
+          setShowPane={setIsNotePaneOpen}
           setShowMenu={setShowMenu}
           buttonLabel="Add Note +"
           title="All Notes"
@@ -67,8 +67,8 @@ const Notes = () => {
         )}
       </div>
       <CreateNote
-        showPane={showPane}
-        setShowPane={setShowPane}
+        isNotePaneOpen={isNotePaneOpen}
+        setIsNotePaneOpen={setIsNotePaneOpen}
         title="Add New Note"
         addNote={addNote}
       />
