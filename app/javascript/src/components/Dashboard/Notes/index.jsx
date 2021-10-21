@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { PageLoader, Toastr } from "neetoui/v2";
+import { PageLoader, Toastr } from "neetoui";
 
 import CustomHeader from "components/Common/CustomHeader";
 import EmptyState from "components/Common/EmptyState";

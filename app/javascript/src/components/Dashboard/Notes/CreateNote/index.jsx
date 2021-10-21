@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Check } from "neetoicons";
-import { Typography } from "neetoui/v2";
-import { Button, Pane } from "neetoui/v2";
-import { Input, Select } from "neetoui/v2/formik";
+import { Typography } from "neetoui";
+import { Button, Pane } from "neetoui";
+import { Input, Select } from "neetoui/formik";
 
 import Create from "./Create";
 

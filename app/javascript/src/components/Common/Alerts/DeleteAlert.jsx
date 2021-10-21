@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Check } from "neetoicons";
-import { Modal, Typography, Button } from "neetoui/v2";
+import { Modal, Typography, Button } from "neetoui";
 
 const DeleteAlert = ({
   isDeleteOpen,
