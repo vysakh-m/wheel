@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { PageLoader, Toastr, Pagination } from "neetoui";
 
@@ -10,11 +10,16 @@ import NewContact from "./NewContact";
 import Table from "./Table";
 
 const Contacts = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [contacts, setContacts] = useState(CONTACT_DATA);
   const [showMenu, setShowMenu] = useState(true);
   const [searchContent, setSearchContent] = useState("");
   const [isContactPaneOpen, setIsContactPaneOpen] = useState(false);
+
+  useEffect(async () => {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  }, []);
 
   const deleteContact = id => {
     setIsLoading(true);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { PageLoader, Toastr } from "neetoui";
@@ -12,11 +12,16 @@ import CreateNote from "./CreateNote";
 import NotesCard from "./NotesCard";
 
 const Notes = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchContent, setSearchContent] = useState("");
   const [showMenu, setShowMenu] = useState(true);
   const [notes, setNotes] = useState(NOTES_DATA);
   const [isNotePaneOpen, setIsNotePaneOpen] = useState(false);
+
+  useEffect(async () => {
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsLoading(false);
+  }, []);
 
   const deleteNote = id => {
     setIsLoading(true);
