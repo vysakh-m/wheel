@@ -31,7 +31,9 @@ function Row({ contact, deleteContact }) {
           </div>
         </td>
         <td>
-          <Typography style="body2">{contact.email}</Typography>
+          <Typography style="body2" className="truncate">
+            {contact.email}
+          </Typography>
         </td>
         <td>
           <Typography style="body2">Feb 5, 2021</Typography>
