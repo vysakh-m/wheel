@@ -1,25 +1,26 @@
 import React from "react";
 
-import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
+import { Typography } from "neetoui/v2";
 import { Button, Pane } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 
-import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "./constants";
-import { NOTE_INITIAL_VALUES, NOTE_VALIDATION_SCHEMA } from "./constants";
+import Create from "./Create";
 
-const NewNoteForm = ({ onClose, addNote }) => {
-  const handleSubmit = values => {
-    addNote(values);
-  };
+import { ASSIGNED_CONTACT_OPTIONS, TAGS_OPTIONS } from "../constants";
+
+const CreateNote = ({ showPane, setShowPane, title, addNote }) => {
+  const onClose = () => setShowPane(false);
+
   return (
-    <Formik
-      initialValues={NOTE_INITIAL_VALUES}
-      onSubmit={handleSubmit}
-      validationSchema={NOTE_VALIDATION_SCHEMA}
-    >
-      {({ isSubmitting }) => (
-        <Form>
+    <Pane title="Create a New Note" isOpen={showPane} onClose={onClose}>
+      <Pane.Header>
+        <Typography className="px-1" style="h2" weight="semibold">
+          {title}
+        </Typography>
+      </Pane.Header>
+      <div>
+        <Create addNote={addNote}>
           <Pane.Body>
             <div className="px-1 w-full space-y-6">
               <Input label="Title*" name="title" placeholder="Enter Title" />
@@ -57,8 +58,6 @@ const NewNoteForm = ({ onClose, addNote }) => {
                 size="large"
                 style="primary"
                 className="ml-2"
-                disabled={isSubmitting}
-                loading={isSubmitting}
                 icon={Check}
               />
               <Button
@@ -70,10 +69,10 @@ const NewNoteForm = ({ onClose, addNote }) => {
               />
             </div>
           </Pane.Footer>
-        </Form>
-      )}
-    </Formik>
+        </Create>
+      </div>
+    </Pane>
   );
 };
 
-export default NewNoteForm;
+export default CreateNote;

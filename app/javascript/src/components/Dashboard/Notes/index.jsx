@@ -8,7 +8,7 @@ import EmptyState from "components/Common/EmptyState";
 import Menubar from "components/Common/Menubar";
 
 import { NOTES_DATA } from "./constants";
-import NewNotePane from "./NewNotePane";
+import CreateNote from "./CreateNote";
 import NotesCard from "./NotesCard";
 
 const Notes = () => {
@@ -66,7 +66,7 @@ const Notes = () => {
           />
         )}
       </div>
-      <NewNotePane
+      <CreateNote
         showPane={showPane}
         setShowPane={setShowPane}
         title="Add New Note"
