@@ -6,7 +6,7 @@ import CustomHeader from "components/Common/CustomHeader";
 import Menubar from "components/Common/Menubar";
 
 import { CONTACT_DATA } from "./constants";
-import NewContactPane from "./NewContactPane";
+import NewContact from "./NewContact";
 import Table from "./Table";
 
 const Contacts = () => {
@@ -62,7 +62,7 @@ const Contacts = () => {
         </div>
       </div>
 
-      <NewContactPane
+      <NewContact
         isContactPaneOpen={isContactPaneOpen}
         setIsContactPaneOpen={setIsContactPaneOpen}
         title="Add New Contact"

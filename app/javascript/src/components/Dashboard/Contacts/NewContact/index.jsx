@@ -1,28 +1,30 @@
 import React from "react";
 
-import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
-import { Button, Pane } from "neetoui";
+import { Pane, Typography } from "neetoui";
+import { Button } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 
-import { ROLE_OPTIONS } from "./constants";
-import {
-  CONTACTS_INITIAL_VALUE,
-  CONTACTS_VALIDATION_SCHEMA
-} from "./constants";
+import Create from "./Create";
 
-const NewContactForm = ({ onClose, addContact }) => {
-  const handleSubmit = values => {
-    addContact(values);
-  };
+import { ROLE_OPTIONS } from "../constants";
+
+const NewContact = ({
+  isContactPaneOpen,
+  setIsContactPaneOpen,
+  title,
+  addContact
+}) => {
+  const onClose = () => setIsContactPaneOpen(false);
   return (
-    <Formik
-      initialValues={CONTACTS_INITIAL_VALUE}
-      onSubmit={handleSubmit}
-      validationSchema={CONTACTS_VALIDATION_SCHEMA}
-    >
-      {({ isSubmitting }) => (
-        <Form>
+    <Pane title={title} isOpen={isContactPaneOpen} onClose={onClose}>
+      <Pane.Header>
+        <Typography className="px-1" style="h2" weight="semibold">
+          {title}
+        </Typography>
+      </Pane.Header>
+      <div>
+        <Create addContact={addContact}>
           <Pane.Body>
             <div className="px-1 w-full space-y-6">
               <div className="flex ">
@@ -67,8 +69,6 @@ const NewContactForm = ({ onClose, addContact }) => {
                 size="large"
                 style="primary"
                 className="ml-2"
-                disabled={isSubmitting}
-                loading={isSubmitting}
                 icon={Check}
               />
               <Button
@@ -80,10 +80,10 @@ const NewContactForm = ({ onClose, addContact }) => {
               />
             </div>
           </Pane.Footer>
-        </Form>
-      )}
-    </Formik>
+        </Create>
+      </div>
+    </Pane>
   );
 };
 
-export default NewContactForm;
+export default NewContact;
