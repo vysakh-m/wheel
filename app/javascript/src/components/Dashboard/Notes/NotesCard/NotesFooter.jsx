@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Clock } from "neetoicons";
-import { Typography, Avatar, Tag } from "neetoui/v2";
+import { Typography, Avatar, Tag } from "neetoui";
 
 function NotesFooter({ action, tags, time, img }) {
   return (

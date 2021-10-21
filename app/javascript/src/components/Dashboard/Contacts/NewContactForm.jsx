@@ -2,8 +2,8 @@ import React from "react";
 
 import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
-import { Button, Pane } from "neetoui/v2";
-import { Input, Select } from "neetoui/v2/formik";
+import { Button, Pane } from "neetoui";
+import { Input, Select } from "neetoui/formik";
 import * as yup from "yup";
 
 import { ROLE_OPTIONS } from "./constants";

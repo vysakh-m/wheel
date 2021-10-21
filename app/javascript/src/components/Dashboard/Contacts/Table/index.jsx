@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Scrollable } from "neetoui/v2/layouts";
+import { Scrollable } from "neetoui/layouts";
 
 import Header from "./Header";
 import Row from "./Row";

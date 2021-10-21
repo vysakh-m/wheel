@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { PageLoader, Toastr, Pagination } from "neetoui/v2";
+import { PageLoader, Toastr, Pagination } from "neetoui";
 
 import CustomHeader from "components/Common/CustomHeader";
 import Menubar from "components/Common/Menubar";

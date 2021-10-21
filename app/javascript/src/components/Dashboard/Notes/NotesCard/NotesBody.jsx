@@ -1,7 +1,7 @@
 import React from "react";
 
 import { MenuVertical } from "neetoicons";
-import { Typography, Dropdown } from "neetoui/v2";
+import { Typography, Dropdown } from "neetoui";
 
 const NotesBody = ({ title, description, showAlert }) => {
   return (
