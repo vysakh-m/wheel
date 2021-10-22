@@ -1,6 +1,6 @@
 import React from "react";
 
-const NotesContainer = ({ children }) => {
+const CardContainer = ({ children }) => {
   return (
     <div className="w-full h-40 mt-4 ">
       <div className="border neeto-ui-border-gray-400 neeto-ui-shadow-m rounded-sm	">
@@ -10,4 +10,4 @@ const NotesContainer = ({ children }) => {
   );
 };
 
-export default NotesContainer;
+export default CardContainer;

@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 export const CONTACT_DATA = [
   {
     id: 1,
@@ -47,3 +49,19 @@ export const ROLE_OPTIONS = [
     value: "role3"
   }
 ];
+
+export const CONTACTS_INITIAL_VALUE = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: ""
+};
+export const CONTACTS_VALIDATION_SCHEMA = yup.object({
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
+  email: yup
+    .string()
+    .email("Invalid Email")
+    .required("Email Address is required"),
+  role: yup.object().required("Role is required")
+});

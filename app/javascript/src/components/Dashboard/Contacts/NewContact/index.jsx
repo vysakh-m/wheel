@@ -1,52 +1,43 @@
 import React from "react";
 
-import { Formik, Form } from "formik";
 import { Check } from "neetoicons";
-import { Button, Pane } from "neetoui";
+import { Pane, Typography } from "neetoui";
+import { Button } from "neetoui";
 import { Input, Select } from "neetoui/formik";
-import * as yup from "yup";
 
-import { ROLE_OPTIONS } from "./constants";
+import Create from "./Create";
 
-const NewContactForm = ({ onClose, addContact }) => {
-  const handleSubmit = values => {
-    addContact(values);
-  };
+import { ROLE_OPTIONS } from "../constants";
+
+const NewContact = ({
+  isContactPaneOpen,
+  setIsContactPaneOpen,
+  title,
+  addContact
+}) => {
+  const onClose = () => setIsContactPaneOpen(false);
   return (
-    <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        role: ""
-      }}
-      onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        firstName: yup.string().required("First Name is required"),
-        lastName: yup.string().required("Last Name is required"),
-        email: yup
-          .string()
-          .email("Invalid Email")
-          .required("Email Address is required"),
-        role: yup.object().required("Role is required")
-      })}
-    >
-      {({ isSubmitting }) => (
-        <Form>
+    <Pane title={title} isOpen={isContactPaneOpen} onClose={onClose}>
+      <Pane.Header>
+        <Typography className="px-1" style="h2" weight="semibold">
+          {title}
+        </Typography>
+      </Pane.Header>
+      <div>
+        <Create addContact={addContact}>
           <Pane.Body>
-            <div className="px-1 w-full">
+            <div className="px-1 w-full space-y-6">
               <div className="flex ">
                 <Input
                   label="First Name*"
                   name="firstName"
-                  className="mb-6"
                   size="large"
                   placeholder="Enter First Name"
                 />
                 <Input
                   label="Last Name*"
                   name="lastName"
-                  className="mb-6 ml-4"
+                  className="ml-4"
                   size="large"
                   placeholder="Enter Last Name"
                 />
@@ -55,7 +46,6 @@ const NewContactForm = ({ onClose, addContact }) => {
               <Input
                 label="Email Address*"
                 name="email"
-                className="mb-6"
                 size="large"
                 placeholder="Enter your email address"
               />
@@ -65,7 +55,6 @@ const NewContactForm = ({ onClose, addContact }) => {
                 isSearchable
                 label="Role*"
                 name="role"
-                className="mb-6"
                 options={ROLE_OPTIONS}
                 placeholder="Select Role"
               />
@@ -80,8 +69,6 @@ const NewContactForm = ({ onClose, addContact }) => {
                 size="large"
                 style="primary"
                 className="ml-2"
-                disabled={isSubmitting}
-                loading={isSubmitting}
                 icon={Check}
               />
               <Button
@@ -93,10 +80,10 @@ const NewContactForm = ({ onClose, addContact }) => {
               />
             </div>
           </Pane.Footer>
-        </Form>
-      )}
-    </Formik>
+        </Create>
+      </div>
+    </Pane>
   );
 };
 
-export default NewContactForm;
+export default NewContact;

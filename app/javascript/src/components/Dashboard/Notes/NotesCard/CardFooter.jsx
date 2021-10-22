@@ -3,7 +3,7 @@ import React from "react";
 import { Clock } from "neetoicons";
 import { Typography, Avatar, Tag, Tooltip } from "neetoui";
 
-function NotesFooter({ action, tags, time, img }) {
+function CardFooter({ action, tags, time, img }) {
   return (
     <div className="mt-3.5 flex justify-between">
       <div className="flex ">
@@ -39,4 +39,4 @@ function NotesFooter({ action, tags, time, img }) {
   );
 }
 
-export default NotesFooter;
+export default CardFooter;
